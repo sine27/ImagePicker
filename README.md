@@ -1,5 +1,19 @@
 # ImagePicker
 
+I'm using the MVVM for this project
+
+Components (cell, button)
+
+DataModels (image data model)
+
+Handlers (API handler)
+
+Helpers	(extensions, shared functions)
+
+ViewControllers	
+
+ViewModels (data controller for view controllers)
+
 ## Done
 
 ### Reqired
