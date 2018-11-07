@@ -14,7 +14,7 @@ ViewControllers
 
 ViewModels (data controller for view controllers)
 
-#### Time: 8h
+#### Time Spent: 8h
 
 ## Done
 
