@@ -14,9 +14,14 @@
         <scene sceneID="lgc-0a-fp6">
             <objects>
                 <navigationController id="Ph8-wE-cRS" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DZW-m0-Ck1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="DZW-m0-Ck1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.46433081300000001" green="0.72001903550000002" blue="0.69300049620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ou7-Ra-Dl7"/>
@@ -41,36 +46,49 @@
             </objects>
             <point key="canvasLocation" x="609" y="-667"/>
         </scene>
-        <!--Result View Controller-->
+        <!--My Images-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ResultViewController" customModule="MyImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiN-Og-AaP">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="543" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHq-zv-OLv">
-                                        <rect key="frame" x="172.5" y="15" width="30" height="30"/>
-                                        <state key="normal" title="Add">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.80404537671232879" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="actionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tjo-8n-U6J"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.46433081304117069" green="0.72001903553299496" blue="0.69300049623684434" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Aag-2g-cjX"/>
                                     <constraint firstItem="gHq-zv-OLv" firstAttribute="centerY" secondItem="wiN-Og-AaP" secondAttribute="centerY" id="N5G-aG-aJG"/>
+                                    <constraint firstItem="gHq-zv-OLv" firstAttribute="width" secondItem="wiN-Og-AaP" secondAttribute="width" id="Z9H-E1-NI4"/>
                                     <constraint firstItem="gHq-zv-OLv" firstAttribute="centerX" secondItem="wiN-Og-AaP" secondAttribute="centerX" id="aw8-u5-wef"/>
+                                    <constraint firstItem="gHq-zv-OLv" firstAttribute="height" secondItem="wiN-Og-AaP" secondAttribute="height" id="vDe-H3-hUY"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Image Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nib-5V-3gy">
+                                <rect key="frame" x="15" y="15" width="345" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="dR6-p4-u2a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n4w-wn-TK0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="489"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C2u-ng-N8e">
                                     <size key="itemSize" width="50" height="50"/>
@@ -86,7 +104,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nb7-dy-Fuj">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nb7-dy-Fuj">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                             </subviews>
@@ -102,6 +120,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="XnT-Gs-SVD"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ie9-H5-SNo"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,18 +132,22 @@
                             <constraint firstItem="wiN-Og-AaP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CV7-mN-tJ0"/>
                             <constraint firstAttribute="bottom" secondItem="wiN-Og-AaP" secondAttribute="bottom" id="Hbr-Kz-ekL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wiN-Og-AaP" secondAttribute="trailing" id="IML-Ss-BPs"/>
-                            <constraint firstItem="n4w-wn-TK0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Rv8-6X-J9J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n4w-wn-TK0" secondAttribute="trailing" id="YBk-Jc-IAE"/>
                             <constraint firstItem="n4w-wn-TK0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a5N-tA-KTa"/>
+                            <constraint firstItem="nib-5V-3gy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="dg3-QI-5ba"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nib-5V-3gy" secondAttribute="trailing" constant="15" id="hZA-vB-kES"/>
+                            <constraint firstItem="nib-5V-3gy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="sXJ-oZ-vrn"/>
+                            <constraint firstItem="n4w-wn-TK0" firstAttribute="top" secondItem="nib-5V-3gy" secondAttribute="bottom" constant="15" id="vIV-AG-Y7J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Nu-cN-07j"/>
+                    <navigationItem key="navigationItem" title="My Images" id="9Nu-cN-07j"/>
                     <connections>
                         <outlet property="actionView" destination="wiN-Og-AaP" id="whj-rA-E1Q"/>
                         <outlet property="addButton" destination="gHq-zv-OLv" id="RP5-RQ-Awp"/>
                         <outlet property="resultImageCollectionView" destination="n4w-wn-TK0" id="64U-rx-MXy"/>
-                        <segue destination="TiH-8W-2qS" kind="show" id="0Q6-qw-WeU"/>
+                        <outlet property="titleLabel" destination="nib-5V-3gy" id="7UM-D0-iAa"/>
+                        <segue destination="TiH-8W-2qS" kind="show" identifier="toPicker" id="0Q6-qw-WeU"/>
                         <segue destination="bm0-kl-xHn" kind="presentation" id="geD-LB-AYl"/>
                     </connections>
                 </viewController>
@@ -129,47 +155,64 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Picker View Controller-->
+        <!--Library-->
         <scene sceneID="FC5-1i-zQg">
             <objects>
                 <viewController id="TiH-8W-2qS" customClass="PickerViewController" customModule="MyImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y1D-xX-h2R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-aq-HeL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="da8-zV-bby">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="148" height="178"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="bD8-Eh-U6c" customClass="PickerCollectionViewCell" customModule="MyImagePicker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="178"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lo1-LZ-u1R">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lo1-LZ-u1R">
+                                                    <rect key="frame" x="0.0" y="0.0" width="148" height="178"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuZ-7r-jIy" customClass="CheckBox" customModule="MyImagePicker" customModuleProvider="target">
+                                                    <rect key="frame" x="110" y="140" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="7j4-Nv-a5i"/>
+                                                        <constraint firstAttribute="height" constant="30" id="8zU-zZ-xI0"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="checkButtonTapped:" destination="bD8-Eh-U6c" eventType="touchUpInside" id="hBn-Lk-Pb9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="centerX" secondItem="bD8-Eh-U6c" secondAttribute="centerX" id="9r2-D3-QSj"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="nuZ-7r-jIy" secondAttribute="bottom" id="M9P-LP-pgU"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="centerY" secondItem="bD8-Eh-U6c" secondAttribute="centerY" id="ScV-gb-OlQ"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="width" secondItem="bD8-Eh-U6c" secondAttribute="width" id="eDt-md-UaB"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="height" secondItem="bD8-Eh-U6c" secondAttribute="height" id="jEY-U6-g6H"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="nuZ-7r-jIy" secondAttribute="trailing" id="sQm-CG-2NF"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="checkButton" destination="nuZ-7r-jIy" id="yu9-UL-49j"/>
                                             <outlet property="resultImage" destination="lo1-LZ-u1R" id="yjz-Lq-Pue"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="TiH-8W-2qS" id="i7n-AH-BfC"/>
+                                    <outlet property="delegate" destination="TiH-8W-2qS" id="5gJ-or-noo"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,8 +224,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qAi-9S-P68"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Library" id="dye-e3-BqL">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Isj-qd-g2Z">
+                            <color key="tintColor" red="0.46433081300000001" green="0.72001903550000002" blue="0.69300049620000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="TiH-8W-2qS" id="16B-9f-99l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageCollectView" destination="yBd-aq-HeL" id="cfQ-0L-IkH"/>
+                        <outlet property="doneButton" destination="Isj-qd-g2Z" id="Ch4-jk-8UM"/>
+                        <outlet property="imageCollectView" destination="yBd-aq-HeL" id="6PA-9X-jqN"/>
                         <segue destination="bm0-kl-xHn" kind="presentation" id="DLv-c0-PMw"/>
                     </connections>
                 </viewController>

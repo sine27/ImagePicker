@@ -10,19 +10,24 @@ import UIKit
 
 class ImageDataModel: NSObject {
     
-    var url_full = ""
-    var url_regular = ""
-    var url_small = ""
-    var url_thumb = ""
+    var url: URL?
     
     init(dict: NSDictionary) {
         if let urls = dict["urls"] as? NSDictionary {
             print(#function)
-            self.url_full = urls["full"] as? String ?? ""
-            self.url_regular = urls["regular"] as? String ?? ""
-            self.url_small = urls["small"] as? String ?? ""
-            self.url_thumb = urls["thumb"] as? String ?? ""
+            if let urlstring = urls["regular"] as? String {
+                self.url = URL(string: urlstring)
+            }
         }
     }
-
+    
+    init(url: URL) {
+        self.url = url
+    }
+    
+    static var resultImages: [ImageDataModel] = [] {
+        didSet {
+            Log.message(funcName: #function, data: resultImages)
+        }
+    }
 }

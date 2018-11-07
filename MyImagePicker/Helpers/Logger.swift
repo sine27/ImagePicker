@@ -14,13 +14,13 @@ import Foundation
 let Log = MyLogger()
 
 enum Mark: String {
-    case start = "\n🔻 "
+    case start = "🔻 "
     case note = "   * "
-    case error = "\n❌ "
-    case warning = "\n⚠️ "
-    case message = "\n💚 "
-    case todo = "\n🌵TODO: "
-    case question = "\n❓"
+    case error = "❌ "
+    case warning = "⚠️ "
+    case message = "💚 "
+    case todo = "🌵TODO: "
+    case question = "❓"
     case tab = "    "
 }
 

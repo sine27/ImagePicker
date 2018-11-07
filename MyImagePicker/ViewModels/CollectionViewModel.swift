@@ -10,10 +10,10 @@ import UIKit
 import Alamofire
 import Photos
 
-enum CollectionViewType {
-    case result
-    case library
-    case unsplash
+enum CollectionViewType: String {
+    case result = "My Images"
+    case library = "Library"
+    case unsplash = "Unsplash"
 }
 
 @objc protocol CollectionViewModelDelegate: class {
@@ -60,6 +60,50 @@ class CollectionViewModel: NSObject {
         return row < imageList.count ? imageList[row]:nil
     }
     
+    func getImageList(page: Int = 1) {
+        
+        // fetch photos from result
+        if viewType == .result {
+            imageList = ImageDataModel.resultImages
+        }
+        
+        // fetch photos from local library
+        if viewType == .library {
+            fetchImagesFromLibrary()
+        }
+        
+        // fetch photos from unsplash
+        if viewType == .unsplash {
+            fetchImagesFromUnsplash(page: page)
+        }
+    }
+    
+    func fetchImagesFromLibrary() {
+        PHPhotoLibrary.requestAuthorization { status in
+            switch status {
+            case .authorized:
+                let fetchOptions = PHFetchOptions()
+                let assets = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+                self.imageList = []
+                
+                for index in 0...4 {
+                    let asset = assets.object(at: index)
+                    asset.getURL(completionHandler: { (url) in
+                        if let url = url {
+                            self.imageList.append(ImageDataModel(url: url))
+                        }
+                    })
+                }
+                
+            case .denied, .restricted:
+                print("Not allowed")
+            case .notDetermined:
+                // Should not see this when requesting
+                print("Not determined yet")
+            }
+        }
+    }
+    
     // MARK: - API
     
     /** Parameters
@@ -67,48 +111,22 @@ class CollectionViewModel: NSObject {
      *  per_page    : Number of items per page. (Optional; default: 10)
      *  order_by    : How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
      */
-    func getImageList(page: Int = 1) {
+    
+    func fetchImagesFromUnsplash(page: Int = 1) {
+        var parameters: Parameters = [:]
+        parameters.updateValue(page, forKey: "page")
+        parameters.updateValue(50, forKey: "per_page")
         
-        // fetch photos from result
-        if viewType == .result {
-            
-        }
-        
-        // fetch photos from local library
-        if viewType == .library {
-            PHPhotoLibrary.requestAuthorization { status in
-                switch status {
-                case .authorized:
-                    let fetchOptions = PHFetchOptions()
-                    let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-                    print("Found \(allPhotos.count) assets")
-                    print(allPhotos.object(at: 0))
-                case .denied, .restricted:
-                    print("Not allowed")
-                case .notDetermined:
-                    // Should not see this when requesting
-                    print("Not determined yet")
+        APIHandler.fetchData(urlString: APIHandler.APIScheme.getPhotos, parameters: parameters, success: { (response) in
+            if let dictArr = response as? [NSDictionary] {
+                Log.message(funcName: #function, data: dictArr[0])
+                self.imageList = []
+                for dict in dictArr {
+                    self.imageList.append(ImageDataModel(dict: dict))
                 }
             }
-        }
-        
-        // fetch photos from unsplash
-        if viewType == .unsplash {
-            var parameters: Parameters = [:]
-            parameters.updateValue(page, forKey: "page")
-            
-            APIHandler.fetchData(urlString: APIHandler.APIScheme.getPhotos, parameters: parameters, success: { (response) in
-                if let dictArr = response as? [NSDictionary] {
-                    Log.message(funcName: #function, data: dictArr[0])
-                    var list: [ImageDataModel] = []
-                    for dict in dictArr {
-                        list.append(ImageDataModel(dict: dict))
-                    }
-                    self.imageList = list
-                }
-            }) { (error) in
-                Log.error(funcName: #function, data: error ?? "Error")
-            }
+        }) { (error) in
+            Log.error(funcName: #function, data: error ?? "Error")
         }
     }
 }

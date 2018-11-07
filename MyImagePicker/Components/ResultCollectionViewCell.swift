@@ -31,6 +31,6 @@ class ResultCollectionViewCell: UICollectionViewCell {
     
     func setup(data: ImageDataModel) {
         print(#function)
-        resultImage.af_setImage(withURL: URL(string: data.url_regular) ?? URL(string: "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png")!)
+        resultImage.af_setImage(withURL: data.url ?? URL(string: "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png")!)
     }
 }

@@ -12,6 +12,7 @@
 		2527CC1E218FD1A000688239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2527CC1C218FD1A000688239 /* Main.storyboard */; };
 		2527CC20218FD1A100688239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2527CC1F218FD1A100688239 /* Assets.xcassets */; };
 		2527CC23218FD1A100688239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2527CC21218FD1A100688239 /* LaunchScreen.storyboard */; };
+		259DE5422192CAA600F622CC /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259DE5412192CAA600F622CC /* CheckButton.swift */; };
 		25E66560218FECD2001B0666 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E6655F218FECD2001B0666 /* ResultCollectionViewCell.swift */; };
 		25E66562218FEE91001B0666 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E66561218FEE91001B0666 /* CollectionViewModel.swift */; };
 		25E6656421913741001B0666 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E6656321913741001B0666 /* APIHandler.swift */; };
@@ -34,6 +35,7 @@
 		2527CC1F218FD1A100688239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2527CC22218FD1A100688239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2527CC24218FD1A100688239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		259DE5412192CAA600F622CC /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		25E6655F218FECD2001B0666 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		25E66561218FEE91001B0666 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		25E6656321913741001B0666 /* APIHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				25E6656D2191600D001B0666 /* PickerCollectionViewCell.swift */,
 				25E6655F218FECD2001B0666 /* ResultCollectionViewCell.swift */,
+				259DE5412192CAA600F622CC /* CheckButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				25E6656821913E09001B0666 /* ImageDataModel.swift in Sources */,
 				25E6657021916025001B0666 /* PreviewViewController.swift in Sources */,
 				25E6656C21915CD9001B0666 /* PickerViewController.swift in Sources */,
+				259DE5422192CAA600F622CC /* CheckButton.swift in Sources */,
 				25E66560218FECD2001B0666 /* ResultCollectionViewCell.swift in Sources */,
 				2527CC19218FD1A000688239 /* AppDelegate.swift in Sources */,
 				25E66562218FEE91001B0666 /* CollectionViewModel.swift in Sources */,
