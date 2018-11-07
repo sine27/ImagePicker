@@ -1,6 +1,6 @@
 # ImagePicker
 
-I'm using the MVVM for this project
+#### I'm using the MVVM for this project
 
 Components (cell, button)
 
@@ -13,6 +13,8 @@ Helpers	(extensions, shared functions)
 ViewControllers	
 
 ViewModels (data controller for view controllers)
+
+#### Time: 8h
 
 ## Done
 
