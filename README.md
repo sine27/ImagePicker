@@ -14,7 +14,13 @@ ViewControllers
 
 ViewModels (data controller for view controllers)
 
-#### Time Spent: 8h
+#### Time Spent: 
+8h
+
+#### Frameworks:
+Alamofire (API handler), AlamofireImage (image lazy load with animation)
+
+#### icons are made by Scketch
 
 ## Done
 
