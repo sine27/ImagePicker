@@ -20,7 +20,7 @@ ViewModels (data controller for view controllers)
 #### Frameworks:
 Alamofire (API handler), AlamofireImage (image lazy load with animation)
 
-#### icons are made by Scketch
+#### Icons (check, uncheck) are made by Scketch
 
 ## Done
 
