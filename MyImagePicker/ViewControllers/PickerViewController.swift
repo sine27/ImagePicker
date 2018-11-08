@@ -20,6 +20,8 @@ class PickerViewController: UIViewController {
         }
     }
     
+    var selectedImage: ImageDataModel?
+    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var imageCollectView: UICollectionView!
     
@@ -34,6 +36,11 @@ class PickerViewController: UIViewController {
         collectionViewLayoutSetup ()
         
         updateDoneButtonTitle()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateDoneButtonTitle()
+        imageCollectView.reloadData()
     }
     
     func collectionViewLayoutSetup () {
@@ -52,6 +59,14 @@ class PickerViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPreview" {
+            if let vc = segue.destination as? PreviewViewController {
+                vc.vm = PreviewViewModel(imageData: selectedImage)
+            }
+        }
+    }
 }
 
 extension PickerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -68,6 +83,7 @@ extension PickerViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = imageCollectView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PickerCollectionViewCell
         cell.image = vm.getData(at: indexPath.row)
         cell.delegate = self
+        cell.previewDelegate = self
         return cell
     }
 }
@@ -87,5 +103,12 @@ extension PickerViewController: PickerCollectionViewCellDelegate {
     func imageUnselected(_ image: ImageDataModel) {
         ImageDataModel.resultImages.removeAll { $0.url == image.url }
         updateDoneButtonTitle()
+    }
+}
+
+extension PickerViewController: ImageCellDelegate {
+    func toPreview(image: ImageDataModel) {
+        selectedImage = image
+        performSegue(withIdentifier: "toPreview", sender: self)
     }
 }

@@ -9,5 +9,14 @@
 import UIKit
 
 class PreviewViewModel: NSObject {
+    
+    var imageData: ImageDataModel?
+    
+    init(imageData: ImageDataModel?) {
+        self.imageData = imageData
+    }
 
+    func getImageUrl() -> ImageDataModel? {
+        return imageData
+    }
 }

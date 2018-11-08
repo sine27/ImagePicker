@@ -7,24 +7,50 @@
 //
 
 import UIKit
+import AlamofireImage
+
+@objc protocol ImageCellDelegate: class {
+    @objc func toPreview(image: ImageDataModel)
+}
 
 class PreviewViewController: UIViewController {
+    
+    var vm: PreviewViewModel!
+    
+    @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var checkButton: CheckBox!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        imageScrollView.minimumZoomScale = 1.0
+        imageScrollView.maximumZoomScale = 6.0
+        
+        if let data = vm.getImageUrl(), let url = data.url {
+            imageView.af_setImage(withURL: url)
+            checkButton.isChecked = ImageDataModel.resultImages.contains(where: { $0.url == url })
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func checkButtonTapped(_ sender: CheckBox) {
+        if let image = vm.imageData {
+            if sender.isChecked {
+                 ImageDataModel.resultImages.removeAll { $0.url == image.url }
+            } else {
+                ImageDataModel.resultImages.append(image)
+            }
+        }
     }
-    */
+    
+    @IBAction func backToPrevious(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
+extension PreviewViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
 }

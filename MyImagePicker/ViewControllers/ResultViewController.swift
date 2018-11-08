@@ -12,11 +12,13 @@ class ResultViewController: UIViewController {
     
     let vm = CollectionViewModel(CollectionViewType.result)
     var targetSource: CollectionViewType = .library
+    var selectedImage: ImageDataModel?
     
     @IBOutlet weak var resultImageCollectionView: UICollectionView!
     @IBOutlet weak var actionView: UIView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,6 @@ class ResultViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         vm.getImageList() 
-        Log.warning(funcName: #function, data: "here")
         setTitle(with: ImageDataModel.resultImages.count)
         resultImageCollectionView.reloadData()
     }
@@ -77,6 +78,12 @@ class ResultViewController: UIViewController {
                 vc.targetSource = self.targetSource
             }
         }
+        
+        if segue.identifier == "toPreview" {
+            if let vc = segue.destination as? PreviewViewController {
+                vc.vm = PreviewViewModel(imageData: selectedImage)
+            }
+        }
     }
 
 }
@@ -98,6 +105,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = resultImageCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ResultCollectionViewCell
         cell.image = vm.getData(at: indexPath.row)
+        cell.delegate = self
         return cell
     }
 }
@@ -105,5 +113,12 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension ResultViewController: CollectionViewModelDelegate {
     func reloadImageTable() {
         resultImageCollectionView.reloadData()
+    }
+}
+
+extension ResultViewController: ImageCellDelegate {
+    func toPreview(image: ImageDataModel) {
+        selectedImage = image
+        performSegue(withIdentifier: "toPreview", sender: self)
     }
 }

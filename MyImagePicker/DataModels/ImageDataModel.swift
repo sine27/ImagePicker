@@ -11,10 +11,10 @@ import UIKit
 class ImageDataModel: NSObject {
     
     var url: URL?
+    var data: Data?
     
     init(dict: NSDictionary) {
         if let urls = dict["urls"] as? NSDictionary {
-            print(#function)
             if let urlstring = urls["regular"] as? String {
                 self.url = URL(string: urlstring)
             }
@@ -23,6 +23,10 @@ class ImageDataModel: NSObject {
     
     init(url: URL) {
         self.url = url
+    }
+    
+    init(data: Data) {
+        self.data = data
     }
     
     static var resultImages: [ImageDataModel] = [] {

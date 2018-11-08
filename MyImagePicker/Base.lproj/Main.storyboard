@@ -38,13 +38,74 @@
                     <view key="view" contentMode="scaleToFill" id="6tM-yt-biZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="4k8-3Y-x6n">
+                                <rect key="frame" x="0.0" y="10" width="375" height="657"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yxe-Kt-bUD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Yxe-Kt-bUD" firstAttribute="centerX" secondItem="4k8-3Y-x6n" secondAttribute="centerX" id="6W1-lA-fM2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yxe-Kt-bUD" secondAttribute="bottom" id="CXP-JN-9Rf"/>
+                                    <constraint firstItem="Yxe-Kt-bUD" firstAttribute="leading" secondItem="4k8-3Y-x6n" secondAttribute="leading" id="EZT-mH-KLF"/>
+                                    <constraint firstItem="Yxe-Kt-bUD" firstAttribute="centerY" secondItem="4k8-3Y-x6n" secondAttribute="centerY" id="kUQ-O6-p3E"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yxe-Kt-bUD" secondAttribute="trailing" id="myu-go-mAX"/>
+                                    <constraint firstItem="Yxe-Kt-bUD" firstAttribute="top" secondItem="4k8-3Y-x6n" secondAttribute="top" id="njI-kM-oRm"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="bm0-kl-xHn" id="1ir-Md-Wcq"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-3O-ITZ" customClass="CheckBox" customModule="MyImagePicker" customModuleProvider="target">
+                                <rect key="frame" x="320" y="612" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="7mU-IJ-7uB"/>
+                                    <constraint firstAttribute="height" constant="45" id="AaS-PJ-6Fz"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="checkButtonTapped:" destination="bm0-kl-xHn" eventType="touchUpInside" id="MBw-KC-mx0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-ZJ-z5z">
+                                <rect key="frame" x="335" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="E9r-nG-v5m"/>
+                                    <constraint firstAttribute="width" constant="30" id="yY0-mP-mAl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="✗">
+                                    <color key="titleColor" red="0.2195854485" green="0.2197099626" blue="0.2117670774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToPrevious:" destination="bm0-kl-xHn" eventType="touchUpInside" id="gV3-e7-izw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CHf-ze-Fd9" firstAttribute="trailing" secondItem="ydk-3O-ITZ" secondAttribute="trailing" constant="10" id="1sq-12-QYd"/>
+                            <constraint firstItem="kHi-ZJ-z5z" firstAttribute="top" secondItem="CHf-ze-Fd9" secondAttribute="top" constant="10" id="7xR-28-8Jl"/>
+                            <constraint firstItem="4k8-3Y-x6n" firstAttribute="leading" secondItem="6tM-yt-biZ" secondAttribute="leading" id="8CE-hf-36n"/>
+                            <constraint firstItem="4k8-3Y-x6n" firstAttribute="top" secondItem="6tM-yt-biZ" secondAttribute="topMargin" constant="-10" id="8Va-W8-QII"/>
+                            <constraint firstItem="4k8-3Y-x6n" firstAttribute="bottom" secondItem="CHf-ze-Fd9" secondAttribute="bottom" id="P8x-tQ-yzb"/>
+                            <constraint firstAttribute="trailing" secondItem="4k8-3Y-x6n" secondAttribute="trailing" id="erk-ku-8xO"/>
+                            <constraint firstItem="CHf-ze-Fd9" firstAttribute="bottom" secondItem="ydk-3O-ITZ" secondAttribute="bottom" constant="10" id="mCH-T5-Puj"/>
+                            <constraint firstItem="CHf-ze-Fd9" firstAttribute="trailing" secondItem="kHi-ZJ-z5z" secondAttribute="trailing" constant="10" id="ysQ-dh-vlX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CHf-ze-Fd9"/>
                     </view>
+                    <connections>
+                        <outlet property="checkButton" destination="ydk-3O-ITZ" id="BM0-Jb-Kei"/>
+                        <outlet property="imageScrollView" destination="4k8-3Y-x6n" id="Pwn-T8-PbF"/>
+                        <outlet property="imageView" destination="Yxe-Kt-bUD" id="aZ2-zN-4tf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yi5-6l-aY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="609" y="-667"/>
+            <point key="canvasLocation" x="608.79999999999995" y="-667.01649175412297"/>
         </scene>
         <!--My Images-->
         <scene sceneID="tne-QT-ifu">
@@ -148,7 +209,7 @@
                         <outlet property="resultImageCollectionView" destination="n4w-wn-TK0" id="64U-rx-MXy"/>
                         <outlet property="titleLabel" destination="nib-5V-3gy" id="7UM-D0-iAa"/>
                         <segue destination="TiH-8W-2qS" kind="show" identifier="toPicker" id="0Q6-qw-WeU"/>
-                        <segue destination="bm0-kl-xHn" kind="presentation" id="geD-LB-AYl"/>
+                        <segue destination="bm0-kl-xHn" kind="presentation" identifier="toPreview" id="geD-LB-AYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -184,7 +245,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="148" height="178"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuZ-7r-jIy" customClass="CheckBox" customModule="MyImagePicker" customModuleProvider="target">
-                                                    <rect key="frame" x="110" y="140" width="30" height="30"/>
+                                                    <rect key="frame" x="114" y="144" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="7j4-Nv-a5i"/>
                                                         <constraint firstAttribute="height" constant="30" id="8zU-zZ-xI0"/>
@@ -197,11 +258,11 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="centerX" secondItem="bD8-Eh-U6c" secondAttribute="centerX" id="9r2-D3-QSj"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="nuZ-7r-jIy" secondAttribute="bottom" id="M9P-LP-pgU"/>
+                                            <constraint firstAttribute="bottom" secondItem="nuZ-7r-jIy" secondAttribute="bottom" constant="4" id="M9P-LP-pgU"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="centerY" secondItem="bD8-Eh-U6c" secondAttribute="centerY" id="ScV-gb-OlQ"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="width" secondItem="bD8-Eh-U6c" secondAttribute="width" id="eDt-md-UaB"/>
                                             <constraint firstItem="lo1-LZ-u1R" firstAttribute="height" secondItem="bD8-Eh-U6c" secondAttribute="height" id="jEY-U6-g6H"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="nuZ-7r-jIy" secondAttribute="trailing" id="sQm-CG-2NF"/>
+                                            <constraint firstAttribute="trailing" secondItem="nuZ-7r-jIy" secondAttribute="trailing" constant="4" id="sQm-CG-2NF"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="checkButton" destination="nuZ-7r-jIy" id="yu9-UL-49j"/>
@@ -235,7 +296,7 @@
                     <connections>
                         <outlet property="doneButton" destination="Isj-qd-g2Z" id="Ch4-jk-8UM"/>
                         <outlet property="imageCollectView" destination="yBd-aq-HeL" id="6PA-9X-jqN"/>
-                        <segue destination="bm0-kl-xHn" kind="presentation" id="DLv-c0-PMw"/>
+                        <segue destination="bm0-kl-xHn" kind="presentation" identifier="toPreview" id="DLv-c0-PMw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rW9-1f-3j3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,6 +305,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="geD-LB-AYl"/>
+        <segue reference="DLv-c0-PMw"/>
     </inferredMetricsTieBreakers>
 </document>

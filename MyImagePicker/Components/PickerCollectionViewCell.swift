@@ -22,6 +22,8 @@ class PickerCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var previewDelegate: ImageCellDelegate?
+    
     var delegate: PickerCollectionViewCellDelegate?
     
     @IBOutlet weak var resultImage: UIImageView!
@@ -34,6 +36,8 @@ class PickerCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         // Set up cell UI
+        resultImage.isUserInteractionEnabled = true
+        resultImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toPreview(sender: ))))
     }
     
     @IBAction func checkButtonTapped(_ sender: CheckBox) {
@@ -45,8 +49,17 @@ class PickerCollectionViewCell: UICollectionViewCell {
     }
     
     func setup(data: ImageDataModel) {
-        print(#function)
-        resultImage.af_setImage(withURL: data.url ?? URL(string: "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png")!)
+        if let url = data.url {
+            resultImage.af_setImage(withURL: url)
+        }
+        
+        if let imagedata = data.data {
+            resultImage.image = UIImage(data: imagedata)
+        }
         checkButton.isChecked = ImageDataModel.resultImages.contains(where: { $0.url == data.url })
+    }
+    
+    @objc func toPreview(sender: UITapGestureRecognizer) {
+        previewDelegate?.toPreview(image: image)
     }
 }

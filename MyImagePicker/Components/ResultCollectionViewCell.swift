@@ -19,18 +19,26 @@ class ResultCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var resultImage: UIImageView!
+    var delegate: ImageCellDelegate?
     
+    @IBOutlet weak var resultImage: UIImageView!
+   
     override func prepareForReuse() {
         resultImage.image = nil
     }
     
     override func awakeFromNib() {
         // Set up cell UI
+        resultImage.isUserInteractionEnabled = true
+        resultImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toPreview(sender: ))))
     }
     
     func setup(data: ImageDataModel) {
-        print(#function)
         resultImage.af_setImage(withURL: data.url ?? URL(string: "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png")!)
+    
+    }
+    
+    @objc func toPreview(sender: UITapGestureRecognizer) {
+        delegate?.toPreview(image: image)
     }
 }

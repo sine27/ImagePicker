@@ -88,6 +88,11 @@ class CollectionViewModel: NSObject {
                 
                 for index in 0...4 {
                     let asset = assets.object(at: index)
+//                    if let data = asset.getImageData(asset: asset) {
+//                        self.imageList.append(ImageDataModel(data: data))
+//                    }
+                    
+//                    failed on real device
                     asset.getURL(completionHandler: { (url) in
                         if let url = url {
                             self.imageList.append(ImageDataModel(url: url))
