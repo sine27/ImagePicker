@@ -8,16 +8,19 @@ DataModels (image data model)
 
 Handlers (API handler)
 
-Helpers	(extensions, shared functions)
+Helpers (extensions, shared functions)
 
-ViewControllers	
+ViewControllers
 
 ViewModels (data controller for view controllers)
 
-#### Time Spent: 
-8h
+#### Time Spent:
+
+v1: 8h
+v2: 8h + 2h = 10h
 
 #### Frameworks:
+
 Alamofire (API handler), AlamofireImage (image lazy load with animation)
 
 #### Icons (check, uncheck) are made by Scketch
@@ -29,6 +32,8 @@ Alamofire (API handler), AlamofireImage (image lazy load with animation)
 - Allow user to select between two sources: local photo library or photo list from Unsplash(50 latest pictures)
 - Get images from the selected source, and display them in a grid layout
 - Allow user to select image, and pass the selected image to the caller of the picker
+- Support image preview (e.g. tap/hold to enlarge the image)
+- Support remove the photo in preview model if selected
 
 ### Optional
 
@@ -42,6 +47,8 @@ Alamofire (API handler), AlamofireImage (image lazy load with animation)
 ## TODO (if time allows)
 
 - Allow load more images from unsplash if reaching the bottom
-- Support image preview (e.g. tap/hold to enlarge the image)
-- Support remove the photo in preview model if selected
 - Local storage
+
+## Note
+
+- PHAsset.requestContentEditingInput failed to fetch urls of local library for images on icloud. Can use PHImageManager.requestImageData, but need redesign ImageDataModel.
